@@ -23,6 +23,46 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('scrolled');
     }
+    
+    // Mostrar/ocultar botón volver arriba
+    const scrollTop = document.getElementById('scrollTop');
+    if (scrollTop) {
+        if (window.scrollY > 500) {
+            scrollTop.classList.add('visible');
+        } else {
+            scrollTop.classList.remove('visible');
+        }
+    }
+});
+
+// ===== BOTÓN VOLVER ARRIBA =====
+const scrollTopBtn = document.getElementById('scrollTop');
+if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// ===== PREGUNTAS FRECUENTES (FAQ) =====
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    question.addEventListener('click', () => {
+        // Cerrar otros items
+        faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+                otherItem.classList.remove('active');
+            }
+        });
+        
+        // Toggle el item actual
+        item.classList.toggle('active');
+    });
 });
 
 // ===== SCROLL SUAVE PARA ANCLAS =====
