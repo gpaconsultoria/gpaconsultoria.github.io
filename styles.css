@@ -711,6 +711,157 @@ img {
     color: white;
 }
 
+/* ===== CÓMO TRABAJO ===== */
+.como-trabajo {
+    background: white;
+}
+
+.proceso-timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.proceso-step {
+    position: relative;
+    text-align: center;
+}
+
+.paso-numero {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-light) 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-principal);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 5px 20px rgba(0, 51, 102, 0.3);
+}
+
+/* Línea conectora entre pasos */
+.proceso-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: calc(50% + 30px);
+    width: calc(100% - 30px);
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+    z-index: 1;
+}
+
+.paso-contenido {
+    background: var(--color-fondo-alt);
+    padding: 30px 20px;
+    border-radius: var(--radio-borde);
+    transition: var(--transicion);
+    height: calc(100% - 70px);
+}
+
+.paso-contenido:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-media);
+}
+
+.paso-icon {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    box-shadow: var(--sombra-suave);
+}
+
+.paso-icon i {
+    font-size: 1.5rem;
+    color: var(--color-primario);
+}
+
+.paso-contenido h4 {
+    font-size: 1.1rem;
+    color: var(--color-primario);
+    margin-bottom: 10px;
+}
+
+.paso-contenido p {
+    font-size: 0.9rem;
+    color: var(--color-texto-light);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.paso-tiempo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--color-secundario);
+    font-weight: 600;
+    background: rgba(240, 165, 0, 0.1);
+    padding: 5px 12px;
+    border-radius: 15px;
+}
+
+.proceso-garantia {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-light) 100%);
+    color: white;
+    padding: 30px 40px;
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-media);
+}
+
+.proceso-garantia > i {
+    font-size: 3rem;
+    opacity: 0.9;
+}
+
+.proceso-garantia h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.proceso-garantia p {
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 992px) {
+    .proceso-timeline {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .proceso-step:not(:last-child)::after {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .proceso-timeline {
+        grid-template-columns: 1fr;
+    }
+    
+    .proceso-garantia {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+    }
+}
+
 /* ===== CONTACTO ===== */
 .contacto {
     background: linear-gradient(135deg, var(--color-primario-dark) 0%, var(--color-primario) 100%);
