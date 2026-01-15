@@ -74,45 +74,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(style);
 });
 
-// ===== FORMULARIO DE CONTACTO =====
+// ===== FORMULARIO DE CONTACTO (Formspree) =====
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
+    // El formulario ahora se envía a Formspree
+    // Mostrar mensaje de carga
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+    submitBtn.disabled = true;
     
-    // Obtener datos del formulario
-    const nombre = document.getElementById('nombre').value;
-    const telefono = document.getElementById('telefono').value;
-    const email = document.getElementById('email').value;
-    const servicio = document.getElementById('servicio').value;
-    const mensaje = document.getElementById('mensaje').value;
-    
-    // Construir mensaje de WhatsApp
-    const whatsappMessage = `
-¡Hola Ing. Giovanni!
-
-*Nuevo mensaje de contacto desde el portafolio web*
-
-👤 *Nombre:* ${nombre}
-📞 *Teléfono:* ${telefono}
-📧 *Correo:* ${email}
-🔧 *Servicio de interés:* ${servicio}
-
-💬 *Mensaje:*
-${mensaje}
-    `.trim();
-    
-    // Codificar mensaje para URL
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    
-    // Abrir WhatsApp
-    window.open(`https://wa.me/573173369020?text=${encodedMessage}`, '_blank');
-    
-    // Limpiar formulario
-    contactForm.reset();
-    
-    // Mostrar mensaje de éxito
-    showNotification('¡Mensaje preparado! Se abrirá WhatsApp para enviarlo.');
+    // Restaurar botón después de envío (Formspree redirige, pero por si acaso)
+    setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }, 3000);
 });
 
 // ===== NOTIFICACIÓN =====

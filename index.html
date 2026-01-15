@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Giovanni Puentes Aviléz - Ingeniero Civil especializado en diagnóstico de patologías, supervisión técnica y diseño estructural en Medellín.">
+    <meta name="description" content="Giovanni Puentes Aviléz - Ingeniero Civil especializado en diagnóstico de patologías, supervisión técnica y diseño estructural. Base Medellín, disponibilidad nacional.">
     <meta name="keywords" content="ingeniero civil, patologías constructivas, NSR-10, Medellín, interventoría, diseño estructural">
     <meta name="author" content="Giovanni Puentes Aviléz">
     
@@ -100,7 +100,7 @@
                         </div>
                         <div class="credencial">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Medellín y Área Metropolitana</span>
+                            <span>Base Medellín | Disponibilidad Nacional</span>
                         </div>
                     </div>
                 </div>
@@ -261,12 +261,13 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h4>Ubicación</h4>
-                            <p>Medellín y Área Metropolitana</p>
+                            <p>Medellín, Colombia</p>
+                            <small style="opacity: 0.8;">Disponible para proyectos a nivel nacional</small>
                         </div>
                     </div>
                 </div>
                 
-                <form class="contacto-form" id="contactForm">
+                <form class="contacto-form" id="contactForm" action="https://formspree.io/f/xreebrzv" method="POST">
                     <div class="form-group">
                         <input type="text" id="nombre" name="nombre" placeholder="Su nombre" required>
                     </div>
@@ -279,19 +280,21 @@
                     <div class="form-group">
                         <select id="servicio" name="servicio" required>
                             <option value="">Seleccione un servicio</option>
-                            <option value="diagnostico">Diagnóstico de Patologías</option>
-                            <option value="interventoria">Interventoría de Mantenimientos</option>
-                            <option value="recepcion">Recepción de Zonas Comunes</option>
-                            <option value="riesgos">Gestión de Riesgos y Alturas</option>
-                            <option value="diseno">Diseño Estructural</option>
-                            <option value="supervision">Supervisión Técnica</option>
-                            <option value="peritaje">Peritaje Técnico</option>
-                            <option value="otro">Otro</option>
+                            <option value="Diagnóstico de Patologías">Diagnóstico de Patologías</option>
+                            <option value="Interventoría de Mantenimientos">Interventoría de Mantenimientos</option>
+                            <option value="Recepción de Zonas Comunes">Recepción de Zonas Comunes</option>
+                            <option value="Gestión de Riesgos y Alturas">Gestión de Riesgos y Alturas</option>
+                            <option value="Diseño Estructural">Diseño Estructural</option>
+                            <option value="Supervisión Técnica">Supervisión Técnica</option>
+                            <option value="Peritaje Técnico">Peritaje Técnico</option>
+                            <option value="Otro">Otro</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuénteme sobre su proyecto o consulta..." required></textarea>
                     </div>
+                    <input type="hidden" name="_subject" value="Nuevo contacto desde Portafolio Web">
+                    <input type="hidden" name="_next" value="https://giovannipuentes.github.io/#contacto">
                     <button type="submit" class="btn btn-primary btn-block">
                         <i class="fas fa-paper-plane"></i> Enviar Mensaje
                     </button>
