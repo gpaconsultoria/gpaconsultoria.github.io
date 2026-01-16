@@ -1,0 +1,8 @@
+# Robots.txt para gpaconsultoria.github.io
+# Ing. Giovanni Puentes Aviléz - Consultor en Ingeniería Civil
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://gpaconsultoria.github.io/sitemap.xml
