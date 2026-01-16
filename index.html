@@ -46,6 +46,8 @@
                 <li><a href="#servicios" class="nav-link">Servicios</a></li>
                 <li><a href="#proceso" class="nav-link">Proceso</a></li>
                 <li><a href="#trayectoria" class="nav-link">Trayectoria</a></li>
+                <li><a href="#bitacora" class="nav-link">Bitácora</a></li>
+                <li><a href="#estimador" class="nav-link">Honorarios</a></li>
                 <li><a href="#contacto" class="nav-link nav-cta">Contactar</a></li>
             </ul>
         </div>
@@ -289,6 +291,132 @@
                     <span class="herramienta"><i class="fas fa-table"></i> Excel Avanzado</span>
                     <span class="herramienta"><i class="fas fa-calculator"></i> Cálculo Estructural</span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BITÁCORA TÉCNICA ===== -->
+    <section class="section bitacora" id="bitacora">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Bitácora Técnica</h2>
+            <p class="section-subtitle">Conocimiento práctico desde la experiencia en obra</p>
+            
+            <div class="bitacora-grid">
+                <article class="bitacora-card">
+                    <a href="humedades-en-edificios.html" class="bitacora-link">
+                        <div class="bitacora-imagen">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="bitacora-contenido">
+                            <span class="bitacora-categoria">Patologías</span>
+                            <h3>Humedades en Edificios: Causas y Soluciones</h3>
+                            <p>Las humedades son el enemigo silencioso de las edificaciones. Aprenda a identificar si es capilaridad, filtración o condensación, y por qué el diagnóstico correcto es crucial.</p>
+                            <div class="bitacora-meta">
+                                <span><i class="fas fa-clock"></i> 8 min lectura</span>
+                                <span class="bitacora-leer">Leer artículo <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="bitacora-card">
+                    <a href="fisuras-vs-grietas.html" class="bitacora-link">
+                        <div class="bitacora-imagen">
+                            <i class="fas fa-expand-alt"></i>
+                        </div>
+                        <div class="bitacora-contenido">
+                            <span class="bitacora-categoria">Diagnóstico</span>
+                            <h3>Fisuras vs Grietas: ¿Cuándo Preocuparse?</h3>
+                            <p>No todas las fisuras son estructurales. Conozca la diferencia entre fisuras de retracción, asentamiento diferencial y fallas estructurales. Guía práctica para propietarios.</p>
+                            <div class="bitacora-meta">
+                                <span><i class="fas fa-clock"></i> 7 min lectura</span>
+                                <span class="bitacora-leer">Leer artículo <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="bitacora-card">
+                    <a href="nsr-10-propietarios.html" class="bitacora-link">
+                        <div class="bitacora-imagen">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="bitacora-contenido">
+                            <span class="bitacora-categoria">Normativa</span>
+                            <h3>NSR-10: Lo que Todo Propietario Debe Saber</h3>
+                            <p>La norma colombiana de construcción sismo resistente no es solo para ingenieros. Conozca sus derechos y cómo verificar que su vivienda cumple con los estándares de seguridad.</p>
+                            <div class="bitacora-meta">
+                                <span><i class="fas fa-clock"></i> 10 min lectura</span>
+                                <span class="bitacora-leer">Leer artículo <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+
+            <div class="bitacora-cta">
+                <p><i class="fas fa-lightbulb"></i> <strong>Próximamente:</strong> Más artículos sobre supervisión de obras, recepción de inmuebles y control de calidad en construcción.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ESTIMADOR DE HONORARIOS ===== -->
+    <section class="section estimador" id="estimador">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-calculator"></i> Estimador de Honorarios</h2>
+            <p class="section-subtitle">Obtenga un rango referencial para su proyecto</p>
+            
+            <div class="estimador-container">
+                <div class="estimador-form">
+                    <div class="estimador-grupo">
+                        <label for="tipoServicio"><i class="fas fa-clipboard-list"></i> Tipo de Servicio</label>
+                        <select id="tipoServicio">
+                            <option value="">Seleccione un servicio...</option>
+                            <option value="visita">Visita Técnica Simple</option>
+                            <option value="patologias">Informe de Patologías</option>
+                            <option value="interventoria">Interventoría de Obras</option>
+                            <option value="diseno">Diseño Estructural</option>
+                            <option value="supervision">Supervisión Técnica Itinerante</option>
+                            <option value="peritaje">Peritaje Técnico</option>
+                        </select>
+                    </div>
+
+                    <div class="estimador-grupo" id="grupoArea" style="display: none;">
+                        <label for="areaProyecto"><i class="fas fa-ruler-combined"></i> Área Aproximada (m²)</label>
+                        <input type="number" id="areaProyecto" placeholder="Ej: 80" min="1">
+                    </div>
+
+                    <div class="estimador-grupo" id="grupoTipo" style="display: none;">
+                        <label for="tipoEdificacion"><i class="fas fa-building"></i> Tipo de Edificación</label>
+                        <select id="tipoEdificacion">
+                            <option value="residencial">Vivienda / Apartamento</option>
+                            <option value="comercial">Local Comercial</option>
+                            <option value="ph">Propiedad Horizontal</option>
+                            <option value="industrial">Industrial / Bodega</option>
+                        </select>
+                    </div>
+
+                    <div class="estimador-grupo" id="grupoVisitas" style="display: none;">
+                        <label for="numVisitas"><i class="fas fa-calendar-check"></i> Número de Visitas Estimadas</label>
+                        <input type="number" id="numVisitas" placeholder="Ej: 4" min="1">
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-block" id="calcularBtn">
+                        <i class="fas fa-calculator"></i> Calcular Estimado
+                    </button>
+                </div>
+
+                <div class="estimador-resultado" id="resultadoEstimador">
+                    <div class="resultado-placeholder">
+                        <i class="fas fa-hand-pointer"></i>
+                        <p>Seleccione un servicio y complete los datos para obtener un estimado</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="estimador-disclaimer">
+                <i class="fas fa-info-circle"></i>
+                <p><strong>Importante:</strong> Este estimador proporciona rangos referenciales basados en valores promedio del mercado. La cotización final se determina después de conocer los detalles específicos de su proyecto durante la consulta inicial (sin costo). Los valores pueden variar según complejidad, ubicación y alcance real del trabajo.</p>
             </div>
         </div>
     </section>

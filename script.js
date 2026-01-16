@@ -229,6 +229,184 @@ document.querySelectorAll('.stat').forEach(stat => {
     statsObserver.observe(stat);
 });
 
+// ===== ESTIMADOR DE HONORARIOS =====
+const tipoServicio = document.getElementById('tipoServicio');
+const grupoArea = document.getElementById('grupoArea');
+const grupoTipo = document.getElementById('grupoTipo');
+const grupoVisitas = document.getElementById('grupoVisitas');
+const calcularBtn = document.getElementById('calcularBtn');
+const resultadoEstimador = document.getElementById('resultadoEstimador');
+
+// Configuración de precios (rangos en COP)
+const preciosBase = {
+    visita: {
+        nombre: 'Visita Técnica Simple',
+        min: 150000,
+        max: 250000,
+        descripcion: 'Inspección inicial en sitio con recomendaciones verbales.',
+        requiereArea: false,
+        requiereTipo: false,
+        requiereVisitas: false
+    },
+    patologias: {
+        nombre: 'Informe de Patologías',
+        min: 800000,
+        max: 1500000,
+        descripcion: 'Diagnóstico completo con registro fotográfico, análisis de causas y recomendaciones técnicas.',
+        requiereArea: true,
+        requiereTipo: true,
+        requiereVisitas: false,
+        factorArea: { pequeño: 1, mediano: 1.3, grande: 1.6 }
+    },
+    interventoria: {
+        nombre: 'Interventoría de Obras',
+        min: 200000,
+        max: 300000,
+        descripcion: 'Supervisión y control de calidad por visita.',
+        requiereArea: false,
+        requiereTipo: true,
+        requiereVisitas: true,
+        porVisita: true
+    },
+    diseno: {
+        nombre: 'Diseño Estructural',
+        min: 25000,
+        max: 40000,
+        descripcion: 'Cálculo estructural según NSR-10.',
+        requiereArea: true,
+        requiereTipo: true,
+        requiereVisitas: false,
+        porM2: true,
+        factorTipo: { residencial: 1, comercial: 1.2, ph: 1.3, industrial: 1.4 }
+    },
+    supervision: {
+        nombre: 'Supervisión Técnica Itinerante',
+        min: 180000,
+        max: 250000,
+        descripcion: 'Visitas de control periódicas a su obra.',
+        requiereArea: false,
+        requiereTipo: false,
+        requiereVisitas: true,
+        porVisita: true
+    },
+    peritaje: {
+        nombre: 'Peritaje Técnico',
+        min: 600000,
+        max: 1200000,
+        descripcion: 'Concepto técnico profesional para toma de decisiones.',
+        requiereArea: true,
+        requiereTipo: true,
+        requiereVisitas: false,
+        factorArea: { pequeño: 1, mediano: 1.25, grande: 1.5 }
+    }
+};
+
+// Mostrar/ocultar campos según servicio seleccionado
+if (tipoServicio) {
+    tipoServicio.addEventListener('change', () => {
+        const servicio = preciosBase[tipoServicio.value];
+        
+        if (servicio) {
+            grupoArea.style.display = servicio.requiereArea ? 'block' : 'none';
+            grupoTipo.style.display = servicio.requiereTipo ? 'block' : 'none';
+            grupoVisitas.style.display = servicio.requiereVisitas ? 'block' : 'none';
+        } else {
+            grupoArea.style.display = 'none';
+            grupoTipo.style.display = 'none';
+            grupoVisitas.style.display = 'none';
+        }
+        
+        // Reset resultado
+        resultadoEstimador.innerHTML = `
+            <div class="resultado-placeholder">
+                <i class="fas fa-hand-pointer"></i>
+                <p>Complete los datos y presione calcular</p>
+            </div>
+        `;
+    });
+}
+
+// Función para formatear moneda
+function formatearPrecio(valor) {
+    return new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    }).format(valor);
+}
+
+// Calcular estimado
+if (calcularBtn) {
+    calcularBtn.addEventListener('click', () => {
+        const servicioKey = tipoServicio.value;
+        
+        if (!servicioKey) {
+            resultadoEstimador.innerHTML = `
+                <div class="resultado-placeholder">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Por favor seleccione un tipo de servicio</p>
+                </div>
+            `;
+            return;
+        }
+        
+        const servicio = preciosBase[servicioKey];
+        const area = parseFloat(document.getElementById('areaProyecto').value) || 0;
+        const tipoEdif = document.getElementById('tipoEdificacion').value;
+        const visitas = parseInt(document.getElementById('numVisitas').value) || 1;
+        
+        let precioMin = servicio.min;
+        let precioMax = servicio.max;
+        let notaAdicional = '';
+        
+        // Calcular según tipo de servicio
+        if (servicio.porM2 && area > 0) {
+            precioMin = servicio.min * area;
+            precioMax = servicio.max * area;
+            
+            if (servicio.factorTipo && tipoEdif) {
+                const factor = servicio.factorTipo[tipoEdif] || 1;
+                precioMin *= factor;
+                precioMax *= factor;
+            }
+            notaAdicional = `Calculado para ${area} m²`;
+        } else if (servicio.porVisita && visitas > 0) {
+            precioMin = servicio.min * visitas;
+            precioMax = servicio.max * visitas;
+            notaAdicional = `Estimado para ${visitas} visita(s)`;
+        } else if (servicio.factorArea && area > 0) {
+            let factorArea = 'pequeño';
+            if (area > 150) factorArea = 'grande';
+            else if (area > 80) factorArea = 'mediano';
+            
+            const factor = servicio.factorArea[factorArea];
+            precioMin *= factor;
+            precioMax *= factor;
+            notaAdicional = `Ajustado para inmueble de ${area} m²`;
+        }
+        
+        // Mostrar resultado
+        resultadoEstimador.innerHTML = `
+            <div class="resultado-contenido">
+                <p class="resultado-titulo">Estimación para</p>
+                <p class="resultado-servicio">${servicio.nombre}</p>
+                <div class="resultado-rango">
+                    <p class="resultado-rango-label">Rango estimado:</p>
+                    <p class="resultado-precio">${formatearPrecio(precioMin)} - ${formatearPrecio(precioMax)}</p>
+                </div>
+                <p class="resultado-nota">
+                    <i class="fas fa-info-circle"></i> ${servicio.descripcion}
+                    ${notaAdicional ? '<br><strong>' + notaAdicional + '</strong>' : ''}
+                </p>
+                <a href="#contacto" class="btn-cotizar">
+                    <i class="fab fa-whatsapp"></i> Solicitar Cotización Exacta
+                </a>
+            </div>
+        `;
+    });
+}
+
 // ===== AÑO ACTUAL EN FOOTER =====
 document.addEventListener('DOMContentLoaded', () => {
     const year = new Date().getFullYear();
