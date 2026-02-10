@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="RjV_e_QEi4vQOyTm7ag7mIcTJfCUZMAb8BZRvcpfYEM" />
-    <meta name="description" content="Giovanni Puentes Aviléz - Ingeniero Civil especializado en diagnóstico de patologías, supervisión técnica y diseño estructural. Base Medellín, disponibilidad nacional.">
-    <meta name="keywords" content="ingeniero civil, patologías constructivas, NSR-10, Medellín, interventoría, diseño estructural, fisuras, grietas, humedades">
+    <meta name="description" content="Giovanni Puentes Aviléz - Ingeniero Civil especializado en diagnóstico de patologías, supervisión técnica, diseño estructural y asesoría en biodigestores. Base Medellín, disponibilidad nacional.">
+    <meta name="keywords" content="ingeniero civil, patologías constructivas, NSR-10, Medellín, interventoría, diseño estructural, fisuras, grietas, humedades, biodigestores, soluciones sostenibles">
     <meta name="author" content="Giovanni Puentes Aviléz">
     
     <!-- Canonical URL -->
@@ -65,7 +65,8 @@
             "Interventoría de Mantenimientos",
             "Diseño Estructural",
             "Peritaje Técnico",
-            "Consultoría NSR-10"
+            "Consultoría NSR-10",
+            "Asesoría Técnica en Biodigestores"
         ],
         "priceRange": "$$",
         "openingHoursSpecification": {
@@ -74,7 +75,7 @@
             "opens": "08:00",
             "closes": "18:00"
         },
-        "sameAs": [],
+        "sameAs": ["https://www.linkedin.com/in/giovanni-puentes-avil%C3%A9z"],
         "founder": {
             "@type": "Person",
             "name": "Giovanni Puentes Aviléz",
@@ -93,6 +94,56 @@
     }
     </script>
     
+    <!-- FAQ Schema.org - Datos Estructurados para Rich Snippets -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Cuánto cuesta una visita técnica o diagnóstico de patologías en Medellín?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El costo varía según el tipo de servicio y la complejidad del proyecto. La consulta inicial es sin costo, donde evaluamos su necesidad y le entregamos una cotización detallada. Los diagnósticos de patologías para copropiedades típicamente incluyen visita más informe técnico."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué incluye un informe técnico de ingeniería civil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Cada informe incluye registro fotográfico detallado, análisis de causas del problema, referencia normativa NSR-10 cuando aplica, recomendaciones técnicas de solución, y está firmado bajo responsabilidad profesional como Ingeniero Civil."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cuánto tiempo toma entregar un diagnóstico estructural?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Después de la visita técnica, el informe se entrega en 3 a 5 días hábiles. Para proyectos urgentes, podemos acordar tiempos de entrega prioritarios."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿El ingeniero trabaja fuera de Medellín?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí, la base es Medellín y el Área Metropolitana, pero hay disponibilidad para proyectos a nivel nacional cuando la envergadura lo amerita. Los viáticos se acuerdan previamente."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Ofrecen asesoría en biodigestores para fincas?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí, cuento con conocimiento práctico en biodigestores para proyectos agropecuarios y rurales. Asesoro en dimensionamiento, implantación y puesta en marcha, orientado al aprovechamiento de residuos orgánicos para generación de biogás y biofertilizante."
+                }
+            }
+        ]
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -104,6 +155,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">GPA</div>
+            <div class="preloader-bar"><div class="preloader-progress"></div></div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- ===== BARRA INFORMATIVA ===== -->
+    <div class="promo-bar" id="promoBar">
+        <div class="promo-bar-content">
+            <span class="promo-bar-icon"><i class="fas fa-info-circle"></i></span>
+            <p>¿Tiene dudas sobre su edificio o proyecto? — La primera asesoría es <strong>sin costo</strong></p>
+            <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20quisiera%20agendar%20una%20asesor%C3%ADa%20inicial." target="_blank" class="promo-bar-btn">Escribir al ingeniero <i class="fas fa-arrow-right"></i></a>
+            <button class="promo-bar-close" id="promoBarClose" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
     <!-- ===== NAVEGACIÓN ===== -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -169,7 +241,7 @@
                         Soy un Ingeniero Civil con una <strong>propuesta de valor única en el mercado</strong>: combino el rigor técnico de la ingeniería de detalle del <strong>Politécnico Jaime Isaza Cadavid</strong> con <strong>15 años de experiencia práctica en obra</strong> como Técnico y Tecnólogo SENA.
                     </p>
                     <p>
-                        A diferencia de un consultor teórico, yo conozco la realidad constructiva <em>"desde el barro hasta el cálculo"</em>. Me especializo en <strong>diagnóstico de patologías</strong>, <strong>supervisión técnica</strong> y <strong>diseño estructural</strong>, ofreciendo a mis clientes la tranquilidad de que sus proyectos cumplirán con la norma <strong>NSR-10</strong>, cuidando su patrimonio y su seguridad.
+                        A diferencia de un consultor teórico, yo conozco la realidad constructiva <em>"desde el barro hasta el cálculo"</em>. Me especializo en <strong>diagnóstico de patologías</strong>, <strong>supervisión técnica</strong> y <strong>diseño estructural</strong>, ofreciendo a mis clientes la tranquilidad de que sus proyectos cumplirán con la norma <strong>NSR-10</strong>, cuidando su patrimonio y su seguridad. Además, cuento con conocimiento práctico en <strong>biodigestores</strong> y soluciones sostenibles aplicadas al entorno rural y agropecuario.
                     </p>
                     <div class="credenciales">
                         <div class="credencial">
@@ -188,6 +260,42 @@
                 </div>
                 <div class="sobre-mi-imagen">
                     <img src="logo.png" alt="GPA - Giovanni Puentes Aviléz" class="logo-grande-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CIFRAS QUE RESPALDAN ===== -->
+    <section class="section cifras" id="cifras">
+        <div class="container">
+            <div class="cifras-grid">
+                <div class="cifra-item">
+                    <div class="cifra-icon"><i class="fas fa-hard-hat"></i></div>
+                    <div class="cifra-valor">
+                        <span class="cifra-numero" data-target="15">0</span><span class="cifra-sufijo">+</span>
+                    </div>
+                    <p class="cifra-label">Años en Obra</p>
+                </div>
+                <div class="cifra-item">
+                    <div class="cifra-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <div class="cifra-valor">
+                        <span class="cifra-numero" data-target="7">0</span><span class="cifra-sufijo">+</span>
+                    </div>
+                    <p class="cifra-label">Años Liderando Supervisión</p>
+                </div>
+                <div class="cifra-item">
+                    <div class="cifra-icon"><i class="fas fa-book"></i></div>
+                    <div class="cifra-valor">
+                        <span class="cifra-numero" data-target="5">0</span><span class="cifra-sufijo"></span>
+                    </div>
+                    <p class="cifra-label">Títulos NSR-10 Dominados</p>
+                </div>
+                <div class="cifra-item">
+                    <div class="cifra-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="cifra-valor">
+                        <span class="cifra-numero" data-target="3">0</span><span class="cifra-sufijo"></span>
+                    </div>
+                    <p class="cifra-label">Niveles de Formación</p>
                 </div>
             </div>
         </div>
@@ -213,24 +321,28 @@
                             <h4>Diagnóstico de Patologías Constructivas</h4>
                             <p>Evaluación técnica de humedades, fisuras, asentamientos y fachadas. Informes con causa raíz y solución definitiva.</p>
                             <span class="servicio-beneficio"><i class="fas fa-check-circle"></i> Tranquilidad y decisiones informadas</span>
+                            <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20necesito%20un%20diagn%C3%B3stico%20de%20patolog%C3%ADas%20en%20mi%20edificio." target="_blank" class="servicio-cta-link"><i class="fab fa-whatsapp"></i> Consultar por este servicio</a>
                         </div>
                         <div class="servicio-card">
                             <div class="servicio-icon"><i class="fas fa-clipboard-check"></i></div>
                             <h4>Interventoría de Mantenimientos</h4>
                             <p>Supervisión a contratistas (fachadistas, impermeabilizadores) para validar materiales y cumplimiento normativo.</p>
                             <span class="servicio-beneficio"><i class="fas fa-check-circle"></i> Control real sobre su inversión</span>
+                            <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20necesito%20interventor%C3%ADa%20para%20un%20mantenimiento%20en%20mi%20copropiedad." target="_blank" class="servicio-cta-link"><i class="fab fa-whatsapp"></i> Consultar por este servicio</a>
                         </div>
                         <div class="servicio-card">
                             <div class="servicio-icon"><i class="fas fa-handshake"></i></div>
                             <h4>Recepción de Zonas Comunes</h4>
                             <p>Acompañamiento técnico para recibir obras nuevas a constructores, validando acabados y redes.</p>
                             <span class="servicio-beneficio"><i class="fas fa-check-circle"></i> Evite vicios ocultos</span>
+                            <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20necesito%20acompa%C3%B1amiento%20para%20recepci%C3%B3n%20de%20zonas%20comunes." target="_blank" class="servicio-cta-link"><i class="fab fa-whatsapp"></i> Consultar por este servicio</a>
                         </div>
                         <div class="servicio-card">
                             <div class="servicio-icon"><i class="fas fa-hard-hat"></i></div>
                             <h4>Gestión de Riesgos y Alturas</h4>
                             <p>Asesoría en protocolos de seguridad para trabajos en zonas comunes.</p>
                             <span class="servicio-beneficio"><i class="fas fa-check-circle"></i> Minimice riesgos legales</span>
+                            <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20necesito%20asesor%C3%ADa%20en%20gesti%C3%B3n%20de%20riesgos%20y%20alturas." target="_blank" class="servicio-cta-link"><i class="fab fa-whatsapp"></i> Consultar por este servicio</a>
                         </div>
                     </div>
                 </div>
@@ -248,18 +360,46 @@
                             <h4>Diseño Estructural</h4>
                             <p>Cálculo para ampliaciones, reformas y viviendas unifamiliares, optimizando materiales sin sacrificar seguridad.</p>
                             <span class="servicio-beneficio"><i class="fas fa-check-circle"></i> Ahorro inteligente con respaldo normativo</span>
+                            <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20necesito%20un%20dise%C3%B1o%20estructural%20para%20mi%20proyecto." target="_blank" class="servicio-cta-link"><i class="fab fa-whatsapp"></i> Consultar por este servicio</a>
                         </div>
                         <div class="servicio-card">
                             <div class="servicio-icon"><i class="fas fa-eye"></i></div>
                             <h4>Supervisión Técnica Itinerante</h4>
                             <p>Visitas de control a su obra para auditar a su maestro o contratista. "Soy sus ojos técnicos en el proyecto."</p>
                             <span class="servicio-beneficio"><i class="fas fa-check-circle"></i> Tranquilidad sin estar presente</span>
+                            <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20necesito%20supervisi%C3%B3n%20t%C3%A9cnica%20para%20mi%20obra." target="_blank" class="servicio-cta-link"><i class="fab fa-whatsapp"></i> Consultar por este servicio</a>
                         </div>
                         <div class="servicio-card">
                             <div class="servicio-icon"><i class="fas fa-file-signature"></i></div>
                             <h4>Peritaje Técnico</h4>
                             <p>Conceptos profesionales para toma de decisiones en compra o reparación de inmuebles.</p>
                             <span class="servicio-beneficio"><i class="fas fa-check-circle"></i> Invierta con certeza</span>
+                            <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20necesito%20un%20peritaje%20t%C3%A9cnico%20para%20un%20inmueble." target="_blank" class="servicio-cta-link"><i class="fab fa-whatsapp"></i> Consultar por este servicio</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soluciones Sostenibles -->
+                <div class="servicios-categoria">
+                    <div class="categoria-header categoria-sostenible">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Soluciones Sostenibles</h3>
+                        <p>Asesoría Técnica para Proyectos Agropecuarios y Rurales</p>
+                    </div>
+                    <div class="servicios-lista">
+                        <div class="servicio-card">
+                            <div class="servicio-icon"><i class="fas fa-seedling"></i></div>
+                            <h4>Asesoría en Biodigestores</h4>
+                            <p>Acompañamiento técnico en dimensionamiento, implantación y puesta en marcha de biodigestores para fincas, granjas y proyectos rurales. Aprovechamiento de residuos orgánicos para generación de biogás y biofertilizante.</p>
+                            <span class="servicio-beneficio"><i class="fas fa-check-circle"></i> Reduzca costos y genere energía limpia</span>
+                            <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20me%20interesa%20asesor%C3%ADa%20sobre%20biodigestores%20para%20mi%20finca." target="_blank" class="servicio-cta-link"><i class="fab fa-whatsapp"></i> Consultar por este servicio</a>
+                        </div>
+                        <div class="servicio-card">
+                            <div class="servicio-icon"><i class="fas fa-recycle"></i></div>
+                            <h4>Manejo de Residuos en Obra</h4>
+                            <p>Orientación técnica para la gestión adecuada de escombros y residuos de construcción, alineada con normativa ambiental vigente.</p>
+                            <span class="servicio-beneficio"><i class="fas fa-check-circle"></i> Cumpla la normativa ambiental</span>
+                            <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20necesito%20asesor%C3%ADa%20en%20manejo%20de%20residuos%20de%20construcci%C3%B3n." target="_blank" class="servicio-cta-link"><i class="fab fa-whatsapp"></i> Consultar por este servicio</a>
                         </div>
                     </div>
                 </div>
@@ -325,6 +465,88 @@
         </div>
     </section>
 
+    <!-- ===== ¿POR QUÉ ELEGIRME? ===== -->
+    <section class="section diferenciador" id="diferenciador">
+        <div class="container">
+            <h2 class="section-title">¿Por Qué Elegirme?</h2>
+            <p class="section-subtitle">La diferencia entre un consultor teórico y un ingeniero que conoce la obra por dentro</p>
+            
+            <div class="comparacion-grid">
+                <div class="comparacion-col comparacion-otros">
+                    <div class="comparacion-header">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>Consultor Convencional</h3>
+                    </div>
+                    <ul class="comparacion-lista">
+                        <li><i class="fas fa-times-circle"></i> Formación principalmente teórica</li>
+                        <li><i class="fas fa-times-circle"></i> Poca o nula experiencia en campo</li>
+                        <li><i class="fas fa-times-circle"></i> Informes genéricos y desconectados de la realidad de obra</li>
+                        <li><i class="fas fa-times-circle"></i> Soluciones que no consideran la constructibilidad</li>
+                        <li><i class="fas fa-times-circle"></i> Sin experiencia en seguridad industrial</li>
+                    </ul>
+                </div>
+                <div class="comparacion-vs">VS</div>
+                <div class="comparacion-col comparacion-yo">
+                    <div class="comparacion-header">
+                        <i class="fas fa-hard-hat"></i>
+                        <h3>Ing. Giovanni Puentes</h3>
+                    </div>
+                    <ul class="comparacion-lista">
+                        <li><i class="fas fa-check-circle"></i> <strong>15+ años</strong> en obra: Técnico → Tecnólogo → Ingeniero</li>
+                        <li><i class="fas fa-check-circle"></i> Experiencia directa en supervisión de <strong>concreto, acero y taludes</strong></li>
+                        <li><i class="fas fa-check-circle"></i> Informes con <strong>criterio constructivo real</strong> y respaldo NSR-10</li>
+                        <li><i class="fas fa-check-circle"></i> Soluciones <strong>viables, prácticas</strong> y respaldadas normativamente</li>
+                        <li><i class="fas fa-check-circle"></i> Líder de departamento de <strong>seguridad industrial</strong></li>
+                    </ul>
+                    <div class="comparacion-cta">
+                        <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20quiero%20agendar%20una%20consulta%20gratuita." target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Consulta gratuita</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CASOS QUE ATIENDO ===== -->
+    <section class="section casos" id="casos">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-bullseye"></i> ¿Se Identifica con Alguno de Estos Casos?</h2>
+            <p class="section-subtitle">Problemas reales que resuelvo todos los días</p>
+            
+            <div class="casos-grid">
+                <div class="caso-card">
+                    <div class="caso-emoji">🏢</div>
+                    <h4>"El edificio tiene humedades y nadie encuentra la causa"</h4>
+                    <p>Le entrego un diagnóstico con causa raíz, registro fotográfico y la solución técnica definitiva. Sin improvisaciones.</p>
+                    <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20mi%20edificio%20tiene%20problemas%20de%20humedades%20y%20necesito%20ayuda." target="_blank" class="caso-cta">Resolver este problema <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="caso-card">
+                    <div class="caso-emoji">🔨</div>
+                    <h4>"Voy a hacer una reforma y no sé si el maestro está haciendo bien"</h4>
+                    <p>Soy sus ojos técnicos. Visitas de supervisión para validar procesos, materiales y que todo cumpla la norma.</p>
+                    <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20estoy%20haciendo%20una%20reforma%20y%20necesito%20supervisi%C3%B3n%20t%C3%A9cnica." target="_blank" class="caso-cta">Resolver este problema <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="caso-card">
+                    <div class="caso-emoji">🏠</div>
+                    <h4>"Quiero comprar un inmueble pero no sé si está en buen estado"</h4>
+                    <p>Peritaje técnico completo: evalúo estructura, patologías ocultas y le digo exactamente en qué se está metiendo.</p>
+                    <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20quiero%20un%20peritaje%20antes%20de%20comprar%20un%20inmueble." target="_blank" class="caso-cta">Resolver este problema <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="caso-card">
+                    <div class="caso-emoji">📋</div>
+                    <h4>"Somos propiedad horizontal y necesitamos un concepto técnico"</h4>
+                    <p>Informes para asambleas, conceptos para el consejo de administración y acompañamiento técnico a su copropiedad.</p>
+                    <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20somos%20copropiedad%20y%20necesitamos%20asesor%C3%ADa%20t%C3%A9cnica." target="_blank" class="caso-cta">Resolver este problema <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="caso-card">
+                    <div class="caso-emoji">🌱</div>
+                    <h4>"Tengo una finca y quiero aprovechar los residuos orgánicos"</h4>
+                    <p>Le asesoro en el dimensionamiento e implantación de un biodigestor para generar biogás y biofertilizante, reduciendo costos y huella ambiental.</p>
+                    <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20me%20interesa%20asesor%C3%ADa%20sobre%20biodigestores%20para%20mi%20finca." target="_blank" class="caso-cta">Resolver este problema <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== TRAYECTORIA ===== -->
     <section class="section trayectoria" id="trayectoria">
         <div class="container">
@@ -363,6 +585,82 @@
                     <span class="herramienta"><i class="fas fa-cube"></i> Revit</span>
                     <span class="herramienta"><i class="fas fa-table"></i> Excel Avanzado</span>
                     <span class="herramienta"><i class="fas fa-calculator"></i> Cálculo Estructural</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LÍNEA DE TIEMPO PROFESIONAL ===== -->
+    <section class="section linea-tiempo" id="recorrido">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-route"></i> Mi Recorrido Profesional</h2>
+            <p class="section-subtitle">Más de 15 años construyendo experiencia desde el terreno hasta el cálculo</p>
+            
+            <div class="timeline">
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2005</div>
+                        <h4>Técnico en Construcción</h4>
+                        <p class="timeline-empresa"><i class="fas fa-graduation-cap"></i> SENA, Medellín</p>
+                        <p>Inicio de mi formación en el sector de la construcción. Aquí nació la pasión por la ingeniería desde la práctica directa en obra.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2009</div>
+                        <h4>Tecnólogo en Construcción</h4>
+                        <p class="timeline-empresa"><i class="fas fa-graduation-cap"></i> SENA, Medellín</p>
+                        <p>Profundización técnica que me permitió asumir roles de mayor responsabilidad en obra y supervisión de procesos constructivos.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2009 – 2010</div>
+                        <h4>Auxiliar de Interventoría Técnica</h4>
+                        <p class="timeline-empresa"><i class="fas fa-building"></i> Técnisuelos LTDA</p>
+                        <p>Inspección de estabilización de taludes y muros de contención. Primera experiencia profesional en mitigación de riesgos geotécnicos.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2010 – 2016</div>
+                        <h4>Auxiliar y Residente de Supervisión</h4>
+                        <p class="timeline-empresa"><i class="fas fa-building"></i> Ingeniería Estructural SA / Intervé SAS</p>
+                        <p>Control de calidad de materiales estructurales, supervisión de armado de refuerzos y vaciado de concretos. Generación de reportes de avance para la dirección de obra.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2016 – 2023</div>
+                        <h4>Residente de Supervisión e Interventoría</h4>
+                        <p class="timeline-empresa"><i class="fas fa-building"></i> Intervé SAS</p>
+                        <p>Liderazgo en supervisión técnica de estructuras metálicas y de concreto según NSR-10. Coordinación del departamento de seguridad para trabajos en alturas.</p>
+                        <div class="timeline-logro"><i class="fas fa-trophy"></i> Reducción significativa de siniestralidad desde 2020</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025</div>
+                        <h4>Ingeniero Civil</h4>
+                        <p class="timeline-empresa"><i class="fas fa-graduation-cap"></i> Politécnico Jaime Isaza Cadavid</p>
+                        <p>Culminación del ciclo profesional en Ingeniería Civil con énfasis estructural. La combinación definitiva entre experiencia práctica y rigor académico.</p>
+                        <div class="timeline-logro"><i class="fas fa-star"></i> Plan de estudios completado al 100%</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content timeline-actual">
+                        <div class="timeline-date">2025 – Presente</div>
+                        <h4>Consultor en Ingeniería Civil</h4>
+                        <p class="timeline-empresa"><i class="fas fa-rocket"></i> GPA Consultoría – Independiente</p>
+                        <p>Consultoría técnica especializada en diagnósticos estructurales, supervisión de obras y asesoría normativa NSR-10. La experiencia de obra al servicio de sus proyectos.</p>
+                        <div class="timeline-logro"><i class="fas fa-flag"></i> Etapa actual</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -560,6 +858,16 @@
                         <p>Generalmente se maneja un <strong>anticipo del 50%</strong> para iniciar y el saldo contra entrega del informe o finalización del servicio. Para interventorías de largo plazo, se acuerdan pagos mensuales según avance.</p>
                     </div>
                 </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Ofrecen asesoría en biodigestores para fincas?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sí, cuento con <strong>conocimiento práctico en biodigestores</strong> para proyectos agropecuarios y rurales. Asesoro en dimensionamiento, implantación y puesta en marcha, orientado al aprovechamiento de residuos orgánicos para generación de biogás y biofertilizante.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -604,7 +912,7 @@
                 </div>
                 
                 <form class="contacto-form" id="contactForm" action="https://formspree.io/f/xreebrzv" method="POST">
-                    <input type="hidden" name="_next" value="https://gp95091.github.io/gracias.html">
+                    <input type="hidden" name="_next" value="https://gpaconsultoria.github.io/gracias.html">
                     <div class="form-group">
                         <input type="text" id="nombre" name="nombre" placeholder="Su nombre" required>
                     </div>
@@ -631,7 +939,6 @@
                         <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuénteme sobre su proyecto o consulta..." required></textarea>
                     </div>
                     <input type="hidden" name="_subject" value="Nuevo contacto desde Portafolio Web">
-                    <input type="hidden" name="_next" value="https://giovannipuentes.github.io/#contacto">
                     <button type="submit" class="btn btn-primary btn-block">
                         <i class="fas fa-paper-plane"></i> Enviar Mensaje
                     </button>
@@ -643,20 +950,81 @@
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
+            <div class="footer-grid">
+                <div class="footer-col">
                     <img src="logo.png" alt="GPA - Giovanni Puentes Aviléz" class="logo-footer-img">
+                    <p class="footer-desc">Soluciones de ingeniería civil con más de 15 años de experiencia práctica. Del barro al cálculo.</p>
                 </div>
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#proceso">Cómo Trabajo</a></li>
+                        <li><a href="#trayectoria">Trayectoria</a></li>
+                        <li><a href="#bitacora">Bitácora Técnica</a></li>
+                        <li><a href="#estimador">Honorarios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> +57 317 336 90 20</p>
+                        <p><i class="fas fa-envelope"></i> gp1042345@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Medellín, Colombia</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/giovanni-puentes-avil%C3%A9z" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20me%20interesa%20conocer%20sus%20servicios." target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:gp1042345@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
                 <p class="footer-slogan">"Construimos confianza sobre cimientos de integridad."</p>
                 <p class="footer-copyright">&copy; 2026 Giovanni Puentes Aviléz. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp Flotante -->
-    <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20me%20interesa%20conocer%20sus%20servicios." class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- WhatsApp Flotante con Tooltip -->
+    <div class="whatsapp-wrapper" id="whatsappWrapper">
+        <div class="whatsapp-tooltip" id="whatsappTooltip">
+            <button class="tooltip-close" id="tooltipClose" aria-label="Cerrar tooltip"><i class="fas fa-times"></i></button>
+            <p>👋 ¿Tiene dudas sobre su proyecto? <strong>Escríbame</strong>, la consulta inicial es gratis.</p>
+        </div>
+        <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20me%20interesa%20conocer%20sus%20servicios." class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Sticky Mobile CTA Bar -->
+    <div class="mobile-cta-bar" id="mobileCta">
+        <a href="tel:+573173369020" class="mobile-cta-item">
+            <i class="fas fa-phone"></i>
+            <span>Llamar</span>
+        </a>
+        <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20vi%20su%20portafolio%20y%20me%20interesa%20una%20consulta." target="_blank" class="mobile-cta-item mobile-cta-whatsapp">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
+        <a href="#contacto" class="mobile-cta-item">
+            <i class="fas fa-envelope"></i>
+            <span>Cotizar</span>
+        </a>
+    </div>
+
+    <!-- Exit-Intent Popup -->
+    <div class="exit-popup-overlay" id="exitPopup">
+        <div class="exit-popup">
+            <button class="exit-popup-close" id="exitPopupClose" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+            <div class="exit-popup-icon"><i class="fas fa-hard-hat"></i></div>
+            <h3>¡Antes de irse!</h3>
+            <p>¿Sabía que la <strong>consulta inicial es sin costo</strong>? Cuénteme su caso por WhatsApp y le doy una orientación técnica sin compromiso.</p>
+            <a href="https://wa.me/573173369020?text=Hola%20Ing.%20Giovanni,%20vi%20su%20portafolio%20y%20quisiera%20una%20orientaci%C3%B3n%20t%C3%A9cnica%20sin%20costo." target="_blank" class="btn btn-primary exit-popup-btn"><i class="fab fa-whatsapp"></i> Consulta gratuita por WhatsApp</a>
+            <small>Sin compromisos. Respuesta en menos de 2 horas en horario laboral.</small>
+        </div>
+    </div>
 
     <!-- Botón Volver Arriba -->
     <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">

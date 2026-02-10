@@ -415,3 +415,228 @@ document.addEventListener('DOMContentLoaded', () => {
         copyright.innerHTML = copyright.innerHTML.replace('2026', year);
     }
 });
+
+// ===== PRELOADER =====
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+            setTimeout(() => preloader.remove(), 600);
+        }, 2000);
+    }
+});
+
+// ===== SCROLL PROGRESS BAR =====
+function updateScrollProgress() {
+    const scrollProgress = document.getElementById('scrollProgress');
+    if (scrollProgress) {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        scrollProgress.style.width = scrollPercent + '%';
+    }
+}
+window.addEventListener('scroll', updateScrollProgress);
+
+// ===== ANIMATED COUNTERS FOR CIFRAS SECTION =====
+const cifrasObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll('.cifra-numero');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                if (isNaN(target)) return;
+                const duration = 2000;
+                const steps = duration / 16;
+                const increment = target / steps;
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+            });
+            cifrasObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+
+const cifrasGrid = document.querySelector('.cifras-grid');
+if (cifrasGrid) {
+    cifrasObserver.observe(cifrasGrid);
+}
+
+// ===== OBSERVE TIMELINE ITEMS FOR ANIMATION =====
+document.querySelectorAll('.timeline-item, .cifra-item, .caso-card, .comparacion-col').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+
+// ===== PROMO BAR =====
+const promoBar = document.getElementById('promoBar');
+const promoBarClose = document.getElementById('promoBarClose');
+
+if (promoBarClose && promoBar) {
+    promoBarClose.addEventListener('click', () => {
+        promoBar.classList.add('hidden');
+        document.querySelector('.navbar').style.top = '0';
+        sessionStorage.setItem('promoBarClosed', 'true');
+    });
+
+    // Restore state if previously closed this session
+    if (sessionStorage.getItem('promoBarClosed') === 'true') {
+        promoBar.classList.add('hidden');
+        document.querySelector('.navbar').style.top = '0';
+    }
+}
+
+// ===== WHATSAPP TOOLTIP AUTO-SHOW =====
+const whatsappTooltip = document.getElementById('whatsappTooltip');
+const tooltipClose = document.getElementById('tooltipClose');
+
+if (whatsappTooltip) {
+    // Show tooltip after 8 seconds
+    setTimeout(() => {
+        if (!sessionStorage.getItem('tooltipClosed')) {
+            whatsappTooltip.classList.add('visible');
+        }
+    }, 8000);
+
+    // Auto-hide after 12 more seconds
+    setTimeout(() => {
+        whatsappTooltip.classList.remove('visible');
+    }, 20000);
+
+    if (tooltipClose) {
+        tooltipClose.addEventListener('click', () => {
+            whatsappTooltip.classList.remove('visible');
+            sessionStorage.setItem('tooltipClosed', 'true');
+        });
+    }
+}
+
+// ===== STICKY MOBILE CTA BAR =====
+const mobileCta = document.getElementById('mobileCta');
+
+if (mobileCta) {
+    let lastScrollMobile = 0;
+
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768) {
+            if (window.scrollY > 400) {
+                mobileCta.classList.add('visible');
+            } else {
+                mobileCta.classList.remove('visible');
+            }
+        }
+        lastScrollMobile = window.scrollY;
+    });
+}
+
+// ===== EXIT-INTENT POPUP =====
+const exitPopup = document.getElementById('exitPopup');
+const exitPopupClose = document.getElementById('exitPopupClose');
+let exitPopupShown = false;
+
+if (exitPopup) {
+    // Desktop: detect mouse leaving viewport (top)
+    document.addEventListener('mouseout', (e) => {
+        if (!exitPopupShown && !sessionStorage.getItem('exitPopupShown') && e.clientY < 5 && e.relatedTarget === null) {
+            exitPopup.classList.add('visible');
+            exitPopupShown = true;
+            sessionStorage.setItem('exitPopupShown', 'true');
+        }
+    });
+
+    // Mobile: detect long scroll up (back-to-top gesture)
+    let mobileScrollStart = 0;
+    let mobileScrollTimer = null;
+
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth > 768) return;
+        if (exitPopupShown || sessionStorage.getItem('exitPopupShown')) return;
+
+        if (window.scrollY > 1500 && window.scrollY < mobileScrollStart - 600) {
+            exitPopup.classList.add('visible');
+            exitPopupShown = true;
+            sessionStorage.setItem('exitPopupShown', 'true');
+        }
+
+        clearTimeout(mobileScrollTimer);
+        mobileScrollTimer = setTimeout(() => {
+            mobileScrollStart = window.scrollY;
+        }, 150);
+    });
+
+    // Also show after 60 seconds if not interacted much
+    setTimeout(() => {
+        if (!exitPopupShown && !sessionStorage.getItem('exitPopupShown')) {
+            // Only show if user scrolled a bit (engaged)
+            if (window.scrollY > 800) {
+                exitPopup.classList.add('visible');
+                exitPopupShown = true;
+                sessionStorage.setItem('exitPopupShown', 'true');
+            }
+        }
+    }, 60000);
+
+    // Close popup
+    if (exitPopupClose) {
+        exitPopupClose.addEventListener('click', () => {
+            exitPopup.classList.remove('visible');
+        });
+    }
+
+    // Close on overlay click
+    exitPopup.addEventListener('click', (e) => {
+        if (e.target === exitPopup) {
+            exitPopup.classList.remove('visible');
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && exitPopup.classList.contains('visible')) {
+            exitPopup.classList.remove('visible');
+        }
+    });
+}
+
+// ===== DYNAMIC PROMO BAR TEXT =====
+document.addEventListener('DOMContentLoaded', () => {
+    // No dynamic month needed — the bar is now evergreen informational text
+});
+
+// ===== ACTIVE NAV LINK ON SCROLL =====
+const sections = document.querySelectorAll('section[id]');
+
+function highlightNavOnScroll() {
+    const scrollY = window.scrollY + 150;
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href') === '#' + sectionId) {
+                    link.classList.add('active-link');
+                }
+            });
+        }
+    });
+}
+
+window.addEventListener('scroll', highlightNavOnScroll);
